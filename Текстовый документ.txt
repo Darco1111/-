@@ -1,0 +1,15 @@
+const { Bot } = require('@maxhub/max-bot-api');
+
+const BOT_TOKEN = 'f9LHodD0cOJkUQUzFZV421abcLiZ-zfziqV9Vj0PMUf6I844abcou-tl4uHRhd6_GjlyIg-1qMzkI8tbwG2e';
+
+const bot = new Bot(BOT_TOKEN);
+
+bot.command('start', async (ctx) => {
+    await ctx.reply('Привет! Я бот для музеев Ставрополья.');
+});
+
+bot.on('message_created', async (ctx) => {
+    await ctx.reply(`Вы сказали: ${ctx.message.body.text}`);
+});
+
+bot.start().then(() => console.log('✅ Бот запущен'));
